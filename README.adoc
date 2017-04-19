@@ -1,0 +1,40 @@
+= Java Servlet Session
+
+This is a demonstration of a web-application that uses https://en.wikipedia.org/wiki/Session_(computer_science)[sessions].
+
+== Quickstart
+
+```
+./gradlew appRun
+```
+
+== Pages
+
+* `login.html` -- accessible without authentication.
+* `user.html` -- accessible after authentication.
+
+== `SessionFilter`
+
+Intercepts requests to `/user.html`.
+
+*Accepts* requests carrying previously authenticated session identifiers.
+
+*Denies* requests without one and redirects to `/login.html`.
+
+== `LoginServlet`
+
+Handles `POST` requests sent to `/login` originating from `login.html`.
+
+Checks if a user exists with the given `email` and `password` via the `UserService`.
+
+* Redirects to `login.html` if the user doesn't exist.
+* If it exists creates a new session (after invalidating the previous).
+* Associates the user's email address with the session.
+* Then redirects to `user.html`.
+
+== `UserServlet`
+
+Handles `GET` requests sent to `/user.html`.
+
+Returns the contents of `user.html` if the requests carries a previously authenticated identifiers.
+Dynamically retrieves the logged in user's email address from the session.
