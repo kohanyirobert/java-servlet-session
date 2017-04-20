@@ -1,6 +1,6 @@
 = Java Servlet Session
 
-This is a demonstration of a web-application that uses https://en.wikipedia.org/wiki/Session_(computer_science)[sessions].
+Demonstration of a web-application that uses https://en.wikipedia.org/wiki/Session_(computer_science)[sessions].
 
 == Quickstart
 
